@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
+@RequestMapping("/api/v1/app/")
 public class TheaterController {
     @Autowired
     TheaterBO theaterBO;
