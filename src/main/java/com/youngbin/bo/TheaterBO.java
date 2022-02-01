@@ -36,6 +36,10 @@ public class TheaterBO {
                 .forEach(theaterMapper::insert);
     }
 
+    public Theater findByName(String theaterName) {
+        return theaterMapper.findByName(theaterName);
+    }
+
     /**
      * @desc 데이터베이스 내의 영화관 정보 삭제.
      */

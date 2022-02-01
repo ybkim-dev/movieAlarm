@@ -11,6 +11,7 @@ import java.util.HashMap;
 @Repository
 public interface MovieMapper {
     ArrayList<HashMap<String, Object>> findAll();
+    Movie findByName(String movieName);
     void deleteAll();
     void insert(Movie movie);
 }

@@ -6,12 +6,14 @@ import com.youngbin.dto.MovieDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
 
 
 @RestController
@@ -29,6 +31,15 @@ public class MovieController {
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setResultCode("200");
         movieDTO.setResponse(movieBO.findAll());
+
+        return new ResponseEntity<>(movieDTO, HttpStatus.OK);
+    }
+
+    @RequestMapping(value= "movie", method = RequestMethod.POST)
+    public ResponseEntity<?> findByName(@RequestBody HashMap<String, String> movie) {
+        MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setResultCode("200");
+        movieDTO.setResponse(movieBO.findByName(movie.get("movieName")));
 
         return new ResponseEntity<>(movieDTO, HttpStatus.OK);
     }

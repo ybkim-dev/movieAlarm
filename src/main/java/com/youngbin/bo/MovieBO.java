@@ -31,6 +31,10 @@ public class MovieBO {
         return movieMapper.findAll();
     }
 
+    public Movie findByName(String movieName) {
+        return movieMapper.findByName(movieName);
+    }
+
     /**
      * @desc DB 내의 movie 테이블의 모든 원소 제거.
      */
