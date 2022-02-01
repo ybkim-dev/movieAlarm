@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
+<mapper namespace="com.youngbin.mapper.TheaterMapper">
+    <insert id="insert" parameterType="Theater" useGeneratedKeys="true" keyProperty="id">
+        insert into theater (id, theater_name, theater_code, area_name, area_code, theater_name_eng, area_name_eng) values (#{id}, #{theaterName}, #{theaterCode}, #{areaName}, #{areaCode}, #{theaterNameEng}, #{areaNameEng})
+    </insert>
+
+    <delete id="deleteAll">
+        delete from theater
+    </delete>
+</mapper>
