@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youngbin.mapper.ReservationMapper">
+
+    <select id="findAll" resultType="HashMap">
+        select * from reservation where is_pushed = 0 order by id
+	</select>
+
+    <insert id="insert">
+        insert into reservation(movie_title, area_code, theater_code, screen_time) values(#{movieTitle}, #{areaCode}, #{theaterCode}, #{time})
+    </insert>
+
+</mapper>
