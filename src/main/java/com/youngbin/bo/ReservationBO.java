@@ -19,7 +19,10 @@ public class ReservationBO {
     @Autowired
     ReservationMapper reservationMapper;
 
-    public void insertReservation(ReservationVO reservationVO) {
+    public void insertReservation(ReservationVO reservationVO) throws NullPointerException {
+        /**
+         * TODO : find By Name 예외처리 (data 없는 경우 해결)
+         */
         Movie selectedMovie = movieBO.findByName(reservationVO.getMovieTitle());
         Theater selectedTheater = theaterBO.findByName(reservationVO.getTheaterName());
 
