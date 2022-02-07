@@ -23,6 +23,6 @@ Content-Type: application/json
 
 {
   "theaterName" : "강변",
-  "movieTitle" : "해적",
+  "movieTitle" : "스퍼",
   "time" :  "1400"
 }
