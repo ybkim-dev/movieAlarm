@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @RestController
 @RequestMapping("/api/v1/app/")
 public class ReservationController {
@@ -26,7 +29,7 @@ public class ReservationController {
             responseDTO.setResponse("Insert Success");
             return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | SQLException e) {
             ResponseDTO responseDTO = new ResponseDTO();
             responseDTO.setResultCode("500");
             responseDTO.setResponse("Insert Failure");

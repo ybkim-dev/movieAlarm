@@ -12,5 +12,6 @@ public class Reservation {
     public String movieTitle;
     public String areaCode;
     public String theaterCode;
+    public String day;
     public String time;
 }

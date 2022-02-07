@@ -7,7 +7,7 @@
 	</select>
 
     <insert id="insert">
-        insert into reservation(movie_title, area_code, theater_code, screen_time) values(#{movieTitle}, #{areaCode}, #{theaterCode}, #{time})
+        insert into reservation(movie_title, area_code, theater_code, screen_day, screen_time) values(#{movieTitle}, #{areaCode}, #{theaterCode}, #{day}, #{time})
     </insert>
 
 </mapper>
