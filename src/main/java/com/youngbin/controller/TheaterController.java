@@ -1,7 +1,7 @@
 package com.youngbin.controller;
 
 import com.youngbin.bo.TheaterBO;
-import com.youngbin.dto.TheaterDTO;
+import com.youngbin.dto.ResponseDTO;
 import org.codehaus.jettison.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,10 +27,10 @@ public class TheaterController {
 
     @RequestMapping(value = "theater", method = RequestMethod.POST)
     public ResponseEntity<?> findByName(@RequestBody HashMap<String, String> theater) {
-        TheaterDTO theaterDTO = new TheaterDTO();
-        theaterDTO.setResultCode("200");
-        theaterDTO.setResponse(theaterBO.findByName(theater.get("theaterName")));
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setResultCode("200");
+        responseDTO.setResponse(theaterBO.findByName(theater.get("theaterName")));
 
-        return new ResponseEntity<>(theaterDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 }

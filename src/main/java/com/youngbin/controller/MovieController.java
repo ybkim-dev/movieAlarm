@@ -2,7 +2,7 @@ package com.youngbin.controller;
 
 
 import com.youngbin.bo.MovieBO;
-import com.youngbin.dto.MovieDTO;
+import com.youngbin.dto.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,20 +28,20 @@ public class MovieController {
      */
     @RequestMapping(value = "movies", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
-        MovieDTO movieDTO = new MovieDTO();
-        movieDTO.setResultCode("200");
-        movieDTO.setResponse(movieBO.findAll());
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setResultCode("200");
+        responseDTO.setResponse(movieBO.findAll());
 
-        return new ResponseEntity<>(movieDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @RequestMapping(value= "movie", method = RequestMethod.POST)
     public ResponseEntity<?> findByName(@RequestBody HashMap<String, String> movie) {
-        MovieDTO movieDTO = new MovieDTO();
-        movieDTO.setResultCode("200");
-        movieDTO.setResponse(movieBO.findByName(movie.get("movieName")));
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setResultCode("200");
+        responseDTO.setResponse(movieBO.findByName(movie.get("movieName")));
 
-        return new ResponseEntity<>(movieDTO, HttpStatus.OK);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @RequestMapping(value = "movies", method = RequestMethod.DELETE)
