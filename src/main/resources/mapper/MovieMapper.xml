@@ -4,7 +4,7 @@
 
     <select id="findAll" resultType="HashMap">
         select * from movie order by movie_score desc
-	</select>
+    </select>
 
     <select id="findByName" parameterType="String" resultType="com.youngbin.domain.Movie">
         select * from movie where movie_title LIKE CONCAT('%', #{movieName}, '%')
@@ -15,7 +15,9 @@
     </delete>
 
     <insert id="insert">
-        insert into movie(movie_id, movie_title, movie_image_source, movie_score, opening_date, reservation_link, is_opened) values(#{movieId}, #{movieTitle}, #{movieImageSource}, #{movieScore}, #{openingDate}, #{reservationLink}, #{isOpened})
+        insert into movie(movie_id, movie_title, movie_image_source, movie_score, opening_date, reservation_link,
+        is_opened) values(#{movieId}, #{movieTitle}, #{movieImageSource}, #{movieScore}, #{openingDate},
+        #{reservationLink}, #{isOpened})
     </insert>
 
 </mapper>

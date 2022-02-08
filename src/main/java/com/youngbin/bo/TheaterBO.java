@@ -25,6 +25,13 @@ public class TheaterBO {
     private final static String crawlingURL = "http://www.cgv.co.kr/theaters/?areacode=01&theaterCode=0056";
 
     /**
+     * @desc 모든 영화관 검색
+     */
+    public ArrayList<Theater> findAll() {
+        return theaterMapper.findAll();
+    }
+
+    /**
      * @desc 크롤링하여 그 결과를 파싱하고 데이터베이스에 저장.
      */
     public void insertTheaterByCrawling() throws IOException, JSONException {
@@ -55,7 +62,6 @@ public class TheaterBO {
     }
 
     /**
-     *
      * @desc 크롤링 결과에서 영화관 정보 JSON만 String 형태로 파싱.
      */
     private String parseTheaterJSON(Document document) {
@@ -83,14 +89,14 @@ public class TheaterBO {
         List<Theater> theaters = new ArrayList<>();
 
         JSONArray theaterInfoJsonArray = new JSONArray(theaterJsonData);
-        for(int i=0;i<theaterInfoJsonArray.length();i++){
+        for (int i = 0; i < theaterInfoJsonArray.length(); i++) {
             JSONObject curRegion = theaterInfoJsonArray.getJSONObject(i);
 
             String regionName = curRegion.getString("RegionName");
             String regionNameEng = curRegion.getString("RegionName_ENG");
 
             JSONArray AreaTheaterDetailList = curRegion.getJSONArray("AreaTheaterDetailList");
-            for(int j=0;j<AreaTheaterDetailList.length();j++){
+            for (int j = 0; j < AreaTheaterDetailList.length(); j++) {
                 JSONObject curTheaterInfo = AreaTheaterDetailList.getJSONObject(j);
 
                 Theater theater = Theater.builder()

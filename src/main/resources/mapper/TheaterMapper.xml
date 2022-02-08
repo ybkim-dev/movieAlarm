@@ -4,12 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis-3-mapper.dtd에 주목 -->
 <mapper namespace="com.youngbin.mapper.TheaterMapper">
 
+    <select id="findAll" resultType="com.youngbin.domain.Theater">
+        select * from theater order by id
+    </select>
+
     <select id="findByName" parameterType="String" resultType="com.youngbin.domain.Theater">
         select * from theater where theater_name LIKE CONCAT('%', #{theaterName}, '%')
     </select>
 
     <insert id="insert">
-        insert into theater (id, theater_name, theater_code, area_name, area_code, theater_name_eng, area_name_eng) values (#{id}, #{theaterName}, #{theaterCode}, #{areaName}, #{areaCode}, #{theaterNameEng}, #{areaNameEng})
+        insert into theater (id, theater_name, theater_code, area_name, area_code, theater_name_eng, area_name_eng)
+        values (#{id}, #{theaterName}, #{theaterCode}, #{areaName}, #{areaCode}, #{theaterNameEng}, #{areaNameEng})
     </insert>
 
     <delete id="deleteAll">

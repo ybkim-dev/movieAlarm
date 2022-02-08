@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  * MyBatis 설정을 위한 java file.
  */
 @Configuration
-@MapperScan(value= "com.youngbin", sqlSessionFactoryRef = "SqlSessionFactory")
+@MapperScan(value = "com.youngbin", sqlSessionFactoryRef = "SqlSessionFactory")
 public class MyBatisConfig {
     @Value("${spring.datasource.mapper-locations}")
     String mPath;
@@ -38,7 +38,7 @@ public class MyBatisConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
-    @Bean(name= "SessionTemplate")
+    @Bean(name = "SessionTemplate")
     public SqlSessionTemplate SqlSessionTemplate(@Qualifier("SqlSessionFactory") SqlSessionFactory firstSqlSessionFactory) {
         return new SqlSessionTemplate(firstSqlSessionFactory);
     }

@@ -4,10 +4,19 @@
 
     <select id="findAll" resultType="HashMap">
         select * from reservation where is_pushed = 0 order by id
-	</select>
+    </select>
 
     <insert id="insert">
-        insert into reservation(movie_title, area_code, theater_code, screen_day, screen_time) values(#{movieTitle}, #{areaCode}, #{theaterCode}, #{day}, #{time})
+        insert into reservation(movie_title, area_code, theater_code, screen_day, screen_time) values(#{movieTitle},
+        #{areaCode}, #{theaterCode}, #{day}, #{time})
     </insert>
 
+    <select id="findByDateAndTheater" resultType="com.youngbin.domain.Reservation">
+        select * from reservation where area_code = #{areaCode} and theater_code = #{theaterCode} and screen_day =
+        #{date} limit 1000 offset #{offset}
+    </select>
+
+    <update id="updatePush" parameterType="Integer">
+        update reservation set is_pushed = 1 where id = #{id}
+    </update>
 </mapper>

@@ -10,8 +10,8 @@
     </Appenders>
     <Loggers>
         <Root level="info">
-            <AppenderRef ref="ConsoleLog" />
-            <AppenderRef ref="FileLog" />
+            <AppenderRef ref="ConsoleLog"/>
+            <AppenderRef ref="FileLog"/>
         </Root>
     </Loggers>
 </Configuration>

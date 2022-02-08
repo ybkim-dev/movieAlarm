@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -38,4 +39,21 @@ public class ReservationController {
 
     }
 
+    @RequestMapping(value = "reservation/push", method = RequestMethod.GET)
+    public ResponseEntity<?> processReservation() throws IOException {
+        reservationBO.getScreenInfo("20220208", "01", "0056");
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setResultCode("200");
+        responseDTO.setResponse("success");
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "reservation", method = RequestMethod.GET)
+    public ResponseEntity<?> findReservation() throws IOException {
+        reservationBO.reserve();
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setResultCode("200");
+        responseDTO.setResponse("success");
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
 }

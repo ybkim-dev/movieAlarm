@@ -23,8 +23,8 @@ public class MovieController {
     MovieBO movieBO;
 
     /**
-     * @desc : 모든 영화 목록 평점 순으로 정렬하여 반환.
      * @return : 평점 순으로 정렬된 영화 리스
+     * @desc : 모든 영화 목록 평점 순으로 정렬하여 반환.
      */
     @RequestMapping(value = "movies", method = RequestMethod.GET)
     public ResponseEntity<?> findAll() {
@@ -35,7 +35,7 @@ public class MovieController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
-    @RequestMapping(value= "movie", method = RequestMethod.POST)
+    @RequestMapping(value = "movie", method = RequestMethod.POST)
     public ResponseEntity<?> findByName(@RequestBody HashMap<String, String> movie) {
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setResultCode("200");

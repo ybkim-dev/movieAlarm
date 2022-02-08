@@ -74,7 +74,7 @@ public class MovieBO {
         // 영화 포스터 이미지 url
         String movieImageSource = movieInfo.select(".thumb-image img")
                 .attr("abs:src");
-        if(movieImageSource == "") return null;
+        if (movieImageSource == "") return null;
         // 영화 제목
         String movieTitle = movieInfo.select(".title").text();
 
@@ -83,7 +83,7 @@ public class MovieBO {
         Double movieScore = Double.parseDouble(movieScoreStr);
 
         // 개봉 날짜
-        String openingDateStr = movieInfo.select(".txt-info").text().substring(0,10);
+        String openingDateStr = movieInfo.select(".txt-info").text().substring(0, 10);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
         Date openingDate = null;
         try {

@@ -18,7 +18,7 @@ public class UpdateMovieScheduler {
     private final JobLauncher jobLauncher;
 
     @Scheduled(cron = "0 0 10 * * ?") // 매일 10시에 스케쥴러 실행
-    public void executeJob () {
+    public void executeJob() {
         try {
             jobLauncher.run(
                     job,
