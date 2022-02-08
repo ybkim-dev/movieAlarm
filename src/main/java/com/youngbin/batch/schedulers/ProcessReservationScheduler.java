@@ -12,19 +12,19 @@ import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
-public class UpdateMovieScheduler {
+public class ProcessReservationScheduler {
 
-    private final Job updateMovieJob;
+    private final Job processReservationJob;
     private final JobLauncher jobLauncher;
 
-    @Scheduled(cron = "0 0 10 * * ?") // 매일 10시에 스케쥴러 실행
+    @Scheduled(cron = "0 */5 * * * *") // 5분마다 동작.
     public void executeJob() {
         try {
             jobLauncher.run(
-                    updateMovieJob,
+                    processReservationJob,
                     new JobParametersBuilder()
                             .addString("datetime", LocalDateTime.now().toString())
-                            .toJobParameters()  // job parameter 설정
+                            .toJobParameters()
             );
         } catch (JobExecutionException ex) {
             System.out.println(ex.getMessage());
